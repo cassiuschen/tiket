@@ -1,0 +1,37 @@
+nav.navbar.navbar-fixed-top.tk role="navigation"
+  .container-page
+    a.navbar-brand.logo href="/"
+    .navbar#main_nav
+      ul.nav.navbar-nav.navbar-right#control
+        li.divide.hidden-xs
+          a.username Cassius Chen
+        li.hidden-xs
+          a href="#"
+            == fa_icon 'bell-o'
+        li.dropdown.hidden-xs
+          a.dropdown-toggle data-toggle="dropdown"
+            == fa_icon 'circle-o'
+          ul.dropdown-menu role="menu"
+            li
+              a href=""
+                == fa_icon "cog"
+                |  用户设置
+            li
+              a href="" something
+            li
+              a href=""
+                == fa_icon "sign-out"
+                |  退出登录
+        li.dropdown.only-xs
+          a.dropdown-toggle data-toggle="dropdown"
+            == fa_icon 'circle-o'
+          ul.dropdown-menu role="menu"
+            li
+              a
+                == fa_icon "bell-o"
+            li
+              a href=""
+                == fa_icon "cog"
+            li
+              a href=""
+                == fa_icon "sign-out"

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  des: MyText
+  cover: MyString
+  detail: 
+  short_name: MyString
+  public: false
+
+two:
+  name: MyString
+  des: MyText
+  cover: MyString
+  detail: 
+  short_name: MyString
+  public: false

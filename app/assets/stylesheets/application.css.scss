@@ -1,0 +1,58 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ * require_tree .
+ *= require_self
+ * require _font-awesome-ie7.min
+ */
+@import "var";
+@import 'mixin';
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+@import "nav";
+@import "basic_layout";
+
+html {
+  font-size: 12px !important;
+}
+
+a, p {
+  color: $basic_text_color;
+}
+
+span {
+  color: $sub_text_color;
+}
+
+h1, h2, h3, h4, h5, h6, h7 {
+  color: $title_text_color;
+}
+
+a:hover, a:active, a:visited {
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  @include transform(color, 0.28s);
+  color: $active_color;
+}
+
+.only-xs {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .only-xs {
+    display:block !important;
+  }
+}

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  maximum: 1
+  event_id: 
+  des: MyText
+
+two:
+  title: MyString
+  maximum: 1
+  event_id: 
+  des: MyText

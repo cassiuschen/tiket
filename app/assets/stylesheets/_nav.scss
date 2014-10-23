@@ -1,0 +1,109 @@
+@import "var";
+@import "mixin";
+nav.navbar.tk {
+  height: $nav_height + 1px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  box-shadow: 0 0 5px #eaeaea;
+
+  [class^="container"] {
+    height: $nav_height;
+  }
+
+  .container-page {
+    padding-left: $page_padding;
+    padding-right: $page_padding;
+  }
+
+  [class^="navbar"] {
+    height: $nav_height;
+  }
+
+  .logo {
+    background-image: asset-url('logo-65-01.png');
+    width: 100px;
+  }
+
+  li, a {
+    height: $nav_height;
+  }
+
+  li a {
+    padding: 22px;
+  }
+
+  li a:hover, li a:active {
+    background: none;
+  }
+
+  li a.username {
+    color: $sub_text_color;
+  }
+
+  li.divide:after {
+    position: absolute;
+    content: '';
+    top: 22px;
+    right: 0;
+    width: 1px;
+    height: 20px;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.05)),color-stop(50%,rgba(0,0,0,.1)),to(rgba(0,0,0,.05)));
+    background-image: -webkit-linear-gradient(rgba(0,0,0,.05) 0,rgba(0,0,0,.1) 50%,rgba(0,0,0,.05) 100%);
+    background-image: -moz-linear-gradient(rgba(0,0,0,.05) 0,rgba(0,0,0,.1) 50%,rgba(0,0,0,.05) 100%);
+    background-image: linear-gradient(rgba(0,0,0,.05) 0,rgba(0,0,0,.1) 50%,rgba(0,0,0,.05) 100%);
+  }
+
+  .dropdown.open {
+    a:hover, a:active, a:focus {
+      @include transform(color, 0.28s);
+      color: $active_color;
+    }
+
+    a.dropdown-toggle {
+      color: $active_color;
+      background: none;
+    }
+
+    ul.dropdown-menu {
+      border: 1px solid #eee;
+      box-shadow: 0 0 5px #eaeaea;
+      border-radius: 0;
+      a {
+        color: inherit;
+      }
+
+      li {
+        color: $basic_text_color;
+      }
+
+      li:hover, li:active, li:focus {
+        color: $active_color;
+      }
+
+    }
+  }
+  @media (max-width: 767px) {
+    .nav#control {
+      margin: 0 !important;
+      float: right;
+      max-width: 50px;
+    }
+    .dropdown.open {
+      ul {
+        background-color: #fff;
+        min-width: 50px;
+        max-width: 70px;
+        width: 70px;
+        li {
+          width: 70px;
+          a {
+            width: 30px;
+            max-width:30px;
+            padding-top:20px;
+            padding-left:27.5px;
+          }
+        }
+      }
+    }
+  }
+}
