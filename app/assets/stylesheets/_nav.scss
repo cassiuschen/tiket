@@ -2,9 +2,9 @@
 @import "mixin";
 nav.navbar.tk {
   height: $nav_height + 1px;
-  background-color: #fff;
-  border: 1px solid #eee;
-  box-shadow: 0 0 5px #eaeaea;
+  background-color: $background_color;
+  border: 1px solid $line_color;
+  box-shadow: 0 0 5px $line_color;
 
   [class^="container"] {
     height: $nav_height;
@@ -65,7 +65,7 @@ nav.navbar.tk {
     }
 
     ul.dropdown-menu {
-      border: 1px solid #eee;
+      border: 1px solid $line_color;
       box-shadow: 0 0 5px #eaeaea;
       border-radius: 0;
       a {
@@ -90,7 +90,7 @@ nav.navbar.tk {
     }
     .dropdown.open {
       ul {
-        background-color: #fff;
+        background-color: $background_color;
         min-width: 50px;
         max-width: 70px;
         width: 70px;

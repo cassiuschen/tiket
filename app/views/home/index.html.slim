@@ -1,11 +1,15 @@
 .row
   .col-md-3
-    ul.nav.nav-pills.nav-stacked.tk
-      li.active
-        a 全部活动
-      li
-        a 我参加的
-      li
-        a 正在进行的活动
+    = render 'share/sidebar'
   .col-md-9
-    h5 right
+    h3.title 最新活动
+    .row.cards
+      - 5.times
+        .col-md-4.card.tk
+          .cover
+            = image_tag 'demo/cover.jpg'
+          .info
+            .title
+              a 风采之星
+            .actions
+              a.btn.tk.blue.right 进入专题

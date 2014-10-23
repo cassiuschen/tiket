@@ -1,1 +1,30 @@
-.tk.nav
+.tk.nav {
+  li:hover, li.active, a:hover, a:active{
+    background: none;
+    cursor: pointer;
+    span {
+      @include transform(background-color, 0.18s);
+      background-color: $active_color;
+    }
+    a {
+      @include transform(color, 0.18s);
+      color: $active_color;
+    }
+  }
+
+  li.active {
+    color: $title_text_color !important;
+    a {
+      background: none;
+      color: $title_text_color;
+    }
+  }
+
+  li {
+    a {
+      display: inline-block;
+    }
+  }
+
+
+}

@@ -21,31 +21,9 @@
 @import "font-awesome";
 @import "nav";
 @import "basic_layout";
-
-html {
-  font-size: 12px !important;
-}
-
-a, p {
-  color: $basic_text_color;
-}
-
-span {
-  color: $sub_text_color;
-}
-
-h1, h2, h3, h4, h5, h6, h7 {
-  color: $title_text_color;
-}
-
-a:hover, a:active, a:visited {
-  text-decoration: none;
-}
-
-a:hover, a:active {
-  @include transform(color, 0.28s);
-  color: $active_color;
-}
+@import "sidebar";
+@import "text";
+@import "card";
 
 .only-xs {
   display: none !important;
