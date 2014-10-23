@@ -1,0 +1,24 @@
+.btn.blue {
+  background-color: $blue;
+  color: #fff;
+}
+
+.btn.blue-o {
+  color: $blue;
+}
+
+.tk.btn {
+  border: 1px solid $border_color;
+  box-shadow: 0 0 1px $border_color;
+  border-radius: 3px;
+}
+
+.tk.btn:hover {
+  @include transform(box-shadow, .28s);
+  box-shadow: 0 2px 1px $line_color;
+}
+
+.tk.btn:active {
+  @include transform(box-shadow, .08s);
+  box-shadow: 0 0px 4px lighten($blue, 30%);
+}

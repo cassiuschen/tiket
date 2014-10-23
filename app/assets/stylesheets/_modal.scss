@@ -1,0 +1,14 @@
+.modal.tk {
+  .modal-dialog {
+    border-radius: 0px;
+    .modal-content {
+      border-radius: 0px;
+      .modal-header {
+        border: none;
+      }
+      .modal-body {
+        box-shadow: 0 2px 2px $line_color;
+      }
+    }
+  }
+}

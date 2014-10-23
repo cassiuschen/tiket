@@ -1,15 +1,15 @@
 .row
-  .col-md-3
+  .col-md-2
     = render 'share/sidebar'
-  .col-md-9
+  .col-md-10
     h3.title 最新活动
     .row.cards
       - 5.times
-        .col-md-4.card.tk
+        .col-md-4.card.tk.col-xs-12
           .cover
             = image_tag 'demo/cover.jpg'
           .info
             .title
               a 风采之星
             .actions
-              a.btn.tk.blue.right 进入专题
+              a.btn.tk.blue-o.right 进入活动

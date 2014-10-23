@@ -36,3 +36,7 @@ a:hover, a:active {
   background-image: -moz-linear-gradient(rgba(0,0,0,0) 0,rgba(0,0,0,.1) 50%,rgba(0,0,0,0) 100%);
   background-image: linear-gradient(rgba(0,0,0,0) 0,rgba(0,0,0,.1) 50%,rgba(0,0,0,0) 100%);
 }
+
+.sub-title {
+  color: $sub_text_color;
+}
