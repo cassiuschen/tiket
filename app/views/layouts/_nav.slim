@@ -3,33 +3,39 @@ nav.navbar.navbar-fixed-top.tk role="navigation"
     a.navbar-brand.logo href="/"
     .navbar#main_nav
       ul.nav.navbar-nav.navbar-right#control
-        li.divide.hidden-xs
-          a.username Cassius Chen
-        li.hidden-xs
-          a href="#"
-            == fa_icon 'bell-o'
-        li.dropdown.hidden-xs
-          a.dropdown-toggle data-toggle="dropdown"
-            == fa_icon 'circle-o'
-          ul.dropdown-menu role="menu"
-            li
-              a href=""
-                == fa_icon "cog"
-                |  用户设置
-            li
-              a href=""
-                == fa_icon "sign-out"
-                |  退出登录
-        li.dropdown.only-xs
-          a.dropdown-toggle data-toggle="dropdown"
-            == fa_icon 'circle-o'
-          ul.dropdown-menu role="menu"
-            li
-              a
-                == fa_icon "bell-o"
-            li
-              a href=""
-                == fa_icon "cog"
-            li
-              a href=""
-                == fa_icon "sign-out"
+        - if user_signed_in?
+          li.divide.hidden-xs
+            a.username = current_user.email
+          li.hidden-xs
+            a href="#"
+              == fa_icon 'bell-o'
+          li.dropdown.hidden-xs
+            a.dropdown-toggle data-toggle="dropdown"
+              == fa_icon 'circle-o'
+            ul.dropdown-menu role="menu"
+              li
+                = link_to edit_user_registration_path
+                  == fa_icon "cog"
+                  |  用户设置
+              li
+                = link_to destroy_user_session_path, :method => :delete
+                  == fa_icon "sign-out"
+                  |  退出登录
+          li.dropdown.only-xs
+            a.dropdown-toggle data-toggle="dropdown"
+              == fa_icon 'circle-o'
+            ul.dropdown-menu role="menu"
+              li
+                a
+                  == fa_icon "bell-o"
+              li
+                a href=""
+                  == fa_icon "cog"
+              li
+                a href=""
+                  == fa_icon "sign-out"
+        - else
+          li
+            = link_to new_user_registration_path
+              == fa_icon 'sign-up'
+              |  注册

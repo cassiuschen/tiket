@@ -1,0 +1,92 @@
+# This is a manifest file that'll be compiled into application.js, which will include all the files
+# listed below.
+#
+# Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+# or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
+#
+# It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+# compiled file.
+#
+# Read Sprockets README (https:#github.com/sstephenson/sprockets#sprockets-directives) for details
+# about supported directives.
+#
+#= require jquery
+#= require jquery_ujs
+#= require jquery.turbolinks
+#= require turbolinks
+#= require bootstrap-sprockets
+#= require nprogress
+#= require nprogress-turbolinks
+#= require simditor
+#= require angular
+#= require angular-animate
+#= require angular-resource
+#= require angular-touch
+#= require angular-sanitize
+#= require angular-cookies
+#= require angular-route
+#= require base64
+#= require_self
+#= require_tree ./angular
+#= require_tree ./angular/services
+#= require_tree ./angular/controllers
+
+NProgress.configure
+	showSpinner: true
+	ease: 'ease'
+	speed: 500
+
+window.App = angular.module('Tiket', [
+	'ngCookies',
+	'ngRoute',
+	'ngSanitize',
+	'ngResource',
+	'TiketService'
+])
+
+window.secret = "<%= Rails.application.secrets.secret_key_base %>"
+
+window.App.config(["$httpProvider", (provider) ->
+	provider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
+	provider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+])
+
+window.base =
+	CloseFlash : () ->
+		$('a#close_flash').click ->
+			$(this).parent().fadeTo 600, 0, ->
+				$(this).remove()
+	Notice : (content) ->
+		$('#flash_container').append('<div class="flash-info" id="flash_content"><span>' + content + '</span><a id="close_flash"><i class="close icon"></i></a></div>')
+			.children().first().fadeIn 3000, ->
+				window.base.CloseFlash()
+	Warning : (content) ->
+		$('#flash_container').append('<div class="flash-warning" id="flash_content"><span>' + content + '</span><a id="close_flash"><i class="close icon"></i></a></div>')
+			.children().first().fadeIn 3000, ->
+				window.base.CloseFlash()
+	Simditor : (place,can_upload = false) ->
+		editor = new Simditor
+			textarea: place
+			placeholder: ''
+			params: {}
+			upload: can_upload
+			tabIndent: true
+			toolbarFloat: true
+			upload:
+				url: '/api/v1/upload/image'
+				connectionCount: 1
+				leaveConfirm: '正在上传文件，如果离开上传会自动取消'
+			pasteImage: true
+			toolbar: ['bold', 'italic', 'underline', '|', 'ol', 'ul', 'blockquote', 'code', '|', 'link', 'image', '|', 'indent', 'outdent', '|', 'hr', 'table']
+	Init : () ->
+
+window.generate_token = (now) ->
+	time_params = "#{now.getMinutes()}-#{window.secret.substring(5,14)}"
+	base_64 = BASE64.encoder(time_params)
+	secret =  BASE64.encoder "#{base_64}#{window.secret.substring(15,21)}"
+	return secret
+
+$ ->
+	#window.base.Init()
+	if $.turbo.isReady == true
+		window.base.Init()

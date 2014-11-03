@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
-  get 'home/index'
+  root 'home#index'
 
-  devise_for :users
+  devise_for :users, :controllers => {sessions: 'sessions'}, :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
+
+  namespace :api do
+    namespace :v1 do
+      #get 'users/check' => 'users#check_is_signed_up'
+      post 'upload/image'
+      devise_for :users
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

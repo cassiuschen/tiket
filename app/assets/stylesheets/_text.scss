@@ -40,3 +40,18 @@ a:hover, a:active {
 .sub-title {
   color: $sub_text_color;
 }
+
+.tk {
+  input, textarea {
+    border-radius: 0;
+    border: 1px solid $border_color;
+    box-shadow: none;
+  }
+
+  input:focus, textarea:focus {
+    @include transform(border, .18s);
+    border: 1px solid $blue;
+    border-left: 3px solid $blue;
+    box-shadow: 0 0 2px $line_color;
+  }
+}
