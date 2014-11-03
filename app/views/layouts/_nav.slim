@@ -1,6 +1,6 @@
 nav.navbar.navbar-fixed-top.tk role="navigation"
   .container-page
-    a.navbar-brand.logo href="/"
+    = link_to '', root_path, class: 'navbar-brand logo'
     .navbar#main_nav
       ul.nav.navbar-nav.navbar-right#control
         - if user_signed_in?
@@ -39,3 +39,9 @@ nav.navbar.navbar-fixed-top.tk role="navigation"
             = link_to new_user_registration_path
               == fa_icon 'sign-up'
               |  注册
+          li
+            a data-toggle="modal" data-target="#sign_in_modal" role="button"
+              == fa_icon 'sign_in'
+              |  登录
+
+= render 'share/sign_in'

@@ -1,27 +1,26 @@
 .modal.fade.tk#event_editor role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
   .modal-dialog
-    .modal-content
+    = form_for Event.new, html: { class: 'modal-content' } do |f|
       .modal-header
         button.close type="button" data-dismiss="modal"
           span aria-hidden="true" &times;
           span.sr-only 关闭
-        h4.modal-title Modal title
+        h4.modal-title 创建新活动
       .modal-body
-        form
           .form-group
             label 活动标题
-            input.form-control type="text"
+            = f.text_field :name, class: 'form-control'
           .form-group
             label 短地址
             .input-group
               .input-group-addon http://tiket.tk/
-              input.form-control type="text"
+              = f.text_field :short_name, class: 'form-control'
           .form-group
             label 描述
-            textarea.form-control
+            = f.text_area :des, class: 'form-control'
           .form-group
-            label 活动标题
-            input.form-control type="text"
-
+            label 封面
+            = f.file_field :cover, class: 'form-control'
       .modal-footer
         a.btn.tk.blue-o type="button" data-dismiss="modal" Close
+        = f.submit '发布', class: 'btn tk blue'

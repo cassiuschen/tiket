@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  resource :events
 
-  devise_for :users, :controllers => {sessions: 'sessions'}, :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
+  get ':shortname' => 'events#show', as: 'event'
+  root 'home#index'
+  post 'events(.:format)' => 'events#create', as: "new_event"
+  get ':shortname/edit(.:format)' => 'events#edit', as: 'edit_event'
+  patch ':shortname' => 'events#update'
+  put ':shortname' => 'events#update'
+  delete ':shortname' => 'events#destroy'
+
+  devise_for :users, :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
 
   namespace :api do
     namespace :v1 do
