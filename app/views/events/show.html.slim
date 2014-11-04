@@ -1,4 +1,27 @@
 .row
   .col-md-8
-    = @event.name
+    .tk.block
+
+      .header
+        .banner
+          = image_tag @event.cover.xlarge
+        .actions
+        .info
+          h3 = @event.name
+          p 这里是简单描述
+      .body
+        section.description
+          - unless @event.des.empty?
+            p = @event.des
+          - else
+            p 暂无描述
+        section.tickets
+          h3.sub_title 票务信息
   .col-md-4
+    a data-toggle="modal" data-target="#event_update" role="button"
+      == fa_icon "plus"
+      |  修改活动
+    = link_to destroy_event_path(@event), method: :delete, data: { confirm: '你确定么？' }
+      == fa_icon 'delete'
+      |  删除活动
+= render 'share/event_update'

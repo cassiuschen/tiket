@@ -2,22 +2,22 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   include Rails.application.routes.url_helpers
 
-  # GET /articles/1
-  # GET /articles/1.json
+  # GET /ar/1
+  # GET /ar/1.json
   def show
   end
 
-  # GET /articles/new
+  # GET /ar/new
   def new
     @event = Event.new
   end
 
-  # GET /articles/1/edit
+  # GET /ar/1/edit
   def edit
   end
 
-  # POST /articles
-  # POST /articles.json
+  # POST /ar
+  # POST /ar.json
   def create
     @event = Event.new(evnet_params)
 
@@ -32,8 +32,8 @@ class EventsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /articles/1
-  # PATCH/PUT /articles/1.json
+  # PATCH/PUT /ar/1
+  # PATCH/PUT /ar/1.json
   def update
     respond_to do |format|
       if @event.update(evnet_params)
@@ -46,12 +46,12 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /articles/1
-  # DELETE /articles/1.json
+  # DELETE /ar/1
+  # DELETE /ar/1.json
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

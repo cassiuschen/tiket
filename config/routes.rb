@@ -2,12 +2,13 @@ Rails.application.routes.draw do
   resource :events
 
   get ':shortname' => 'events#show', as: 'event'
-  root 'home#index'
-  post 'events(.:format)' => 'events#create', as: "new_event"
+
+  post 'events(.:format)' => 'events#create'
   get ':shortname/edit(.:format)' => 'events#edit', as: 'edit_event'
   patch ':shortname' => 'events#update'
-  put ':shortname' => 'events#update'
-  delete ':shortname' => 'events#destroy'
+  put ':shortname' => 'events#update', as: 'update_event'
+  delete ':shortname' => 'events#destroy', as: 'destroy_event'
+  root 'home#index'
 
   devise_for :users, :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
 

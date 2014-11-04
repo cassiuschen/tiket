@@ -24,7 +24,7 @@ a:hover, a:active {
   color: $active_color;
 }
 
-.title:after {
+h1.title:after, h2.title:after, h3.title:after {
   position: absolute;
   content: '';
   top: 35px;

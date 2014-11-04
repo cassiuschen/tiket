@@ -5,6 +5,7 @@ nav.navbar.tk {
   background-color: $background_color;
   border: 1px solid $line_color;
   box-shadow: 0 0 5px $line_color;
+  opacity: 0.9;
 
   [class^="container"] {
     height: $nav_height;
