@@ -4,24 +4,43 @@
 
       .header
         .banner
-          = image_tag @event.cover.xlarge
-        .actions
-        .info
-          h3 = @event.name
-          p 这里是简单描述
+          = image_tag @event.cover.header
+        /.actions
+        /.info
+        /  h3 = @event.name
+        /  p 这里是简单描述
       .body
-        section.description
+        .title
+          h3 = @event.name
+        .description
           - unless @event.des.empty?
             p = @event.des
           - else
             p 暂无描述
-        section.tickets
-          h3.sub_title 票务信息
+        hr
+        .tickets
+          h3.sub_title
+            == fa_icon 'ticket'
+            |  票务信息
+          .tickets-container
+            .tk.tickets.row
+              - for ticket in @event.collections
+                .tk.ticket.col-md-4.col-xs-12
+                  h5.name = ticket.title
+                  span.info
+                    = ticket.des
+
   .col-md-4
-    a data-toggle="modal" data-target="#event_update" role="button"
-      == fa_icon "plus"
-      |  修改活动
-    = link_to destroy_event_path(@event), method: :delete, data: { confirm: '你确定么？' }
-      == fa_icon 'delete'
-      |  删除活动
+    .tk.block
+      .body
+        a data-toggle="modal" data-target="#event_update" role="button"
+          == fa_icon "plus"
+          |  修改活动
+        = link_to destroy_event_path(@event), method: :delete, data: { confirm: '你确定么？' }
+          == fa_icon 'delete'
+          |  删除活动
+        a data-toggle="modal" data-target="#collection_create" role="button"
+          == fa_icon "plus"
+          |  修改活动
 = render 'share/event_update'
+= render 'share/collection_create'

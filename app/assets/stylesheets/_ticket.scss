@@ -1,0 +1,11 @@
+.tk.tickets {
+  display: block;
+  .tk.ticket {
+    border: 1px solid $border_color;
+    border-radius: 1px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+    padding: 10px 10px;
+
+  }
+}

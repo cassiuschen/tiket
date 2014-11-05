@@ -1,0 +1,22 @@
+.modal.fade.tk#collection_create role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+  .modal-dialog
+    = form_for [:event, @event.collections.new], html: { class: 'modal-content' } do |f|
+      = f.hidden_field :event_id, value: @event.id
+      .modal-header
+        button.close type="button" data-dismiss="modal"
+          span aria-hidden="true" &times;
+          span.sr-only 关闭
+        h4.modal-title 创建一种类型的票
+      .modal-body
+          .form-group
+            label 票的名称
+            = f.text_field :title, class: 'form-control'
+          .form-group
+            label 出票数量（最大9999）
+            = f.number_field :maximum, class: 'form-control'
+          .form-group
+            label 描述
+            = f.text_field :des, class: 'form-control'
+      .modal-footer
+        a.btn.tk.blue-o type="button" data-dismiss="modal" Close
+        = f.submit '创建', class: 'btn tk blue'

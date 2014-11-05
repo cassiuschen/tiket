@@ -1,13 +1,4 @@
 Rails.application.routes.draw do
-  resource :events
-
-  get ':shortname' => 'events#show', as: 'event'
-
-  post 'events(.:format)' => 'events#create'
-  get ':shortname/edit(.:format)' => 'events#edit', as: 'edit_event'
-  patch ':shortname' => 'events#update'
-  put ':shortname' => 'events#update', as: 'update_event'
-  delete ':shortname' => 'events#destroy', as: 'destroy_event'
   root 'home#index'
 
   devise_for :users, :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
@@ -16,9 +7,20 @@ Rails.application.routes.draw do
     namespace :v1 do
       #get 'users/check' => 'users#check_is_signed_up'
       post 'upload/image'
-      devise_for :users
+      #devise_for :users
     end
   end
+
+
+  get ':shortname' => 'events#show', as: 'event'
+  #post 'events(.:format)' => 'events#create'
+  get ':shortname/edit(.:format)' => 'events#edit', as: 'edit_event'
+  patch ':shortname' => 'events#update'
+  put ':shortname' => 'events#update', as: 'update_event'
+  delete ':shortname' => 'events#destroy', as: 'destroy_event'
+  resource :events
+
+  post ':shortname/tickets(.:format)' => 'collections#create', as: 'event_collections'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,7 +1,7 @@
 require 'digest'
 class Api::V1::BaseController < ApplicationController
-  before_action :check_token
-  respond_to :json
+  #before_action :check_token
+  #respond_to :json
 
   def check_token
     if params[:secret][-6..-1] == Rails.application.secrets.secret_key_base[15...21]

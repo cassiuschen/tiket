@@ -37,14 +37,16 @@ class CoverUploader < CarrierWave::Uploader::Base
   # end
 
   version :thumb do
-    process :resize_to_fit => [400, 200]
+    process :resize_to_fill => [400, 200]
   end
 
   version :xlarge do
     process :resize_to_fit => [1200, 600]
   end
 
-
+  version :header do
+    process :resize_to_fill => [1200, 400]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
@@ -54,8 +56,13 @@ class CoverUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+    "#{secure_token}.#{file.extension}" if original_filename.present?
+  end
 
+  protected
+  def secure_token
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+  end
 end

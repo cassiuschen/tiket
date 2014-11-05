@@ -27,6 +27,7 @@
 @import "button";
 @import "modal";
 @import "block";
+@import "ticket";
 
 .only-xs {
   display: none !important;
@@ -36,6 +37,10 @@
   .only-xs {
     display:block !important;
   }
+}
+
+body.tk.home {
+  background-color: white;
 }
 
 .tk.divider {
