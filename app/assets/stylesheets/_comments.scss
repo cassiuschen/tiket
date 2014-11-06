@@ -1,0 +1,127 @@
+.tk {
+  .comments {
+    background-color: $gray_sub;
+    position: relative;
+    padding: 5px 0;
+    border-top: 1px solid $line_color;
+    .comment {
+      padding: 10px 20px;
+      position: relative;
+      .main_content {
+        .avatar {
+          float: left;
+          margin-top: 4px;
+          display: inline-block;
+          img {
+            max-width: none;
+            height: 32px;
+            width: 32px;
+            -webkit-border-radius: 32px;
+            -moz-border-radius: 32px;
+            -ms-border-radius: 32px;
+            -o-border-radius: 32px;
+            border-radius: 32px;
+          }
+        }
+        .content {
+          font-size: 12px;
+          line-height: 22px;
+          word-break: break-all;
+          margin-left: 40px;
+          padding: 0 ;
+          min-height: 32px;
+          p {
+            font-size: 12px;
+            line-height: 22px;
+            word-break: break-all;
+          }
+        }
+      }
+      .sub_content {
+        font-size: 10px;
+        color: #666;
+        line-height: 22px;
+        word-break: break-all;
+        margin-left: 40px;
+        //border-bottom: 1px solid $line_color;
+        .author {
+          margin-right:10px;
+        }
+        .timestamp {
+          display: inline-block;
+          margin-right: 10px;
+        }
+        .actions {
+          float: right;
+          opacity: 0.0
+        }
+      }
+    }
+
+    .comment:hover {
+      .actions {
+        @include transform(opacity, 0.28s);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+form.new_comment {
+  position: relative;
+  max-width: 100%;
+  margin: 0;
+  border-top:1px solid $line_color;
+  background-color: white;
+  .inline_input.group {
+    display: inline-block;
+    position: relative;
+    color: rgba(0,0,0,.7);
+    width: 100%;
+    input {
+      margin: 0;
+      padding: .65em 1em;
+      font-size: 1em;
+      background-color: #FFF;
+      border: 1px solid rgba(0,0,0,.15);
+      outline: 0;
+      color: rgba(0,0,0,.7);
+      border-radius: .3125em;
+      -webkit-transition: background-color .3s ease-out,-webkit-box-shadow .2s ease,border-color .2s ease;
+      -moz-transition: background-color .3s ease-out,box-shadow .2s ease,border-color .2s ease;
+      transition: background-color .3s ease-out,box-shadow .2s ease,border-color .2s ease;
+      -webkit-box-shadow: 0 0 rgba(0,0,0,.3) inset;
+      box-shadow: 0 0 rgba(0,0,0,.3) inset;
+      -webkit-appearance: none;
+      -webkit-tap-highlight-color: rgba(255,255,255,0);
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      box-sizing: border-box;
+      overflow: hidden;
+      border: 0 !important;
+      font-size: 13px !important;
+      width: 100% !important;
+      border-radius: 0 !important;
+      padding:12px 1em;
+      padding-right:3em!important;
+    }
+    #submit {
+      padding-top: 0px !important;
+      border: none;
+      background-color: white;
+      cursor:pointer;
+      cursor: default;
+      position: absolute;
+      opacity: .5;
+      top: 0;
+      right: 0;
+      margin: 0;
+      width: 2.6em;
+      height: 100%;
+      padding-top: .82em;
+      text-align: center;
+      float: right;
+    }
+  }
+}

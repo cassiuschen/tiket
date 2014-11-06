@@ -4,8 +4,8 @@
   .col-md-10
     h3.title 最新活动
     .row.cards
-      - for event in @events.sort_by{|e| e.updated_at}
-        .col-md-4.card.tk.col-xs-12
+      - for event in @events.sort{|e,f| e.updated_at - f.updated_at}
+        .cdol-md-4.card.tk.col-xs-12
           .cover
             - cover = event.cover.thumb || 'demo/cover.jpg'
             = image_tag cover
@@ -17,7 +17,7 @@
 
     h3.title 热门活动
     .row.cards
-      - for event in @events
+      - for event in @events.sort {|e,f| e.created_at - f.created_at}
         .col-md-4.card.tk.col-xs-12
           .cover
             - cover = event.cover.thumb || 'demo/cover.jpg'
