@@ -18,6 +18,7 @@
 #= require nprogress
 #= require nprogress-turbolinks
 #= require simditor
+#= require timeago
 #= require angular
 #= require angular-animate
 #= require angular-resource
@@ -27,8 +28,8 @@
 #= require angular-route
 #= require base64
 #= require_self
-#= require_tree ./angular
-#= require_tree ./angular/services
+# require_tree ./angular
+# require_tree ./angular/services
 #= require_tree ./angular/controllers
 
 NProgress.configure
@@ -36,22 +37,30 @@ NProgress.configure
 	ease: 'ease'
 	speed: 500
 
-window.App = angular.module('Tiket', [
+window.angular_app = angular.module('Tiket', [
 	'ngCookies',
 	'ngRoute',
 	'ngSanitize',
-	'ngResource',
-	'TiketService'
+	'ngResource'
+	#'TiketService'
 ])
+
+#window.angular_app.run ['$rootScope', '$scope', ($rootScope, $scope) ->
+#		$rootScope.flash = (type, content) ->
+#			alert "#{type}: #{content}"
+#	]
+
 
 window.secret = "<%= Rails.application.secrets.secret_key_base %>"
 
-window.App.config(["$httpProvider", (provider) ->
+window.angular_app.config(["$httpProvider", (provider) ->
 	provider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
 	provider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 ])
 
 window.base =
+	TimeAgo : () ->
+		$(".timeago").timeago()
 	CloseFlash : () ->
 		$('a#close_flash').click ->
 			$(this).parent().fadeTo 600, 0, ->
@@ -79,6 +88,7 @@ window.base =
 			pasteImage: true
 			toolbar: ['bold', 'italic', 'underline', '|', 'ol', 'ul', 'blockquote', 'code', '|', 'link', 'image', '|', 'indent', 'outdent', '|', 'hr', 'table']
 	Init : () ->
+		$(".timeago").timeago()
 
 window.generate_token = (now) ->
 	time_params = "#{now.getMinutes()}-#{window.secret.substring(5,14)}"

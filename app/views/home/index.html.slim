@@ -5,7 +5,7 @@
     h3.title 最新活动
     .row.cards
       - for event in @events.sort{|e,f| e.updated_at - f.updated_at}
-        .cdol-md-4.card.tk.col-xs-12
+        .col-md-4.card.tk.col-xs-12
           .cover
             - cover = event.cover.thumb || 'demo/cover.jpg'
             = image_tag cover

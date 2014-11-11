@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       #get 'users/check' => 'users#check_is_signed_up'
       post 'upload/image'
       #devise_for :users
+      post 'comment' => 'comments#create'
+      get 'comments' => 'comments#list'
     end
   end
 

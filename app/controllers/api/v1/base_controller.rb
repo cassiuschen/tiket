@@ -22,4 +22,12 @@ class Api::V1::BaseController < ApplicationController
       raise ActionController::InvalidAuthenticityToken
     end
   end
+
+  def set_current_user
+    session[:current_user] = (current_user)?(current_user.id):(nil)
+  end
+
+  def signed_in?
+    !!(session[:current_user])
+  end
 end

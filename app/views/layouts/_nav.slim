@@ -4,6 +4,7 @@ nav.navbar.navbar-fixed-top.tk role="navigation"
     .navbar#main_nav
       ul.nav.navbar-nav.navbar-right#control
         - if user_signed_in?
+          .angular_data#user data-id="#{current_user.id}"
           li.divide.hidden-xs
             a.username = current_user.email
           li.hidden-xs

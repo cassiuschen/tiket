@@ -1,7 +1,7 @@
 .row
   .col-md-8
     .tk.block
-
+      .angular_data#event data-id="#{@event.short_name}"
       .header
         .banner
           = image_tag @event.cover.header
@@ -32,40 +32,61 @@
 
   .col-md-4
     .tk.block
-      .body
-        a data-toggle="modal" data-target="#event_update" role="button"
-          == fa_icon "plus"
-          |  修改活动
-        = link_to destroy_event_path(@event), method: :delete, data: { confirm: '你确定么？' }
-          == fa_icon 'delete'
-          |  删除活动
-        a data-toggle="modal" data-target="#collection_create" role="button"
-          == fa_icon "plus"
-          |  修改活动
-      .comments
-        - 3.times
-          .comment
-            .main_content
-              a.avatar
-                = image_tag 'demo/avatar.jpeg'
-              .content
-                p
-                  | 这是一条事例评论
-            .sub_content
-              span.author
-                a CassiusChen
-              span.timestamp
-                == fa_icon "clock-o"
-                span.timeago
-                  |   25分钟以前
-              span.actions
-                == fa_icon 'comment-o'
-                |  回复
-      form.new_comment
-        .inline_input.group
-          input type="text" placeholder="请输入信息……"
-          button#submit
-            == fa_icon "arrow-right"
+      - if current_user
+        .body
+          a data-toggle="modal" data-target="#event_update" role="button"
+            == fa_icon "plus"
+            |  修改活动
+          = link_to destroy_event_path(@event), method: :delete, data: { confirm: '你确定么？' }
+            == fa_icon 'delete'
+            |  删除活动
+          a data-toggle="modal" data-target="#collection_create" role="button"
+            == fa_icon "plus"
+            |  修改活动
+        div ng-controller="CommentsController"
+          .comments
+            .comment ng-repeat="comment in comments"
+              .main_content
+                a.avatar
+                  = image_tag 'demo/avatar.jpeg'
+                .content
+                  p
+                    | {{ comment.content }}
+              .sub_content
+                span.author
+                  a
+                    | {{comment.author.name}}
+                span.timestamp
+                  == fa_icon "clock-o"
+                  span.timeago title="{{comment.created_at}}"
+                    |  此处应有时间
+                span.actions
+                  == fa_icon 'comment-o'
+                  |  回复
+          form.new_comment
+            .inline_input.group
+              input#eventId type="hidden" value="#{@event.short_name}"
+              input#content type="text" placeholder="请输入信息……"
+              button#submit ng-click="createComment()"
+                == fa_icon "arrow-right"
+      - else
+        .comments
+          - for comment in @event.comments
+            .comment ng-repeat="comment in comments"
+              .main_content
+                a.avatar
+                  = image_tag 'demo/avatar.jpeg'
+                .content
+                  p
+                    = comment.content
+              .sub_content
+                span.author
+                  a
+                    = User.find(comment.user_id).email
+                span.timestamp
+                  == fa_icon "clock-o"
+                  span.timeago title="#{comment.created_at.iso8601}"
+                    |  此处应有时间
 
 = render 'share/event_update'
 = render 'share/collection_create'

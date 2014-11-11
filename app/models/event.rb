@@ -3,4 +3,5 @@ class Event < ActiveRecord::Base
   mount_uploader :cover, CoverUploader
 
   has_many :collections
+  has_many :comments
 end
