@@ -71,22 +71,29 @@
                 == fa_icon "arrow-right"
       - else
         .comments
-          - for comment in @event.comments
-            .comment ng-repeat="comment in comments"
+          - if @event.comments.empty?
+            .comment
               .main_content
-                a.avatar
-                  = image_tag 'demo/avatar.jpeg'
                 .content
-                  p
-                    = comment.content
-              .sub_content
-                span.author
-                  a
-                    = User.find(comment.user_id).email
-                span.timestamp
-                  == fa_icon "clock-o"
-                  span.timeago title="#{comment.created_at.iso8601}"
-                    |  此处应有时间
+                  p 暂无回复
+          - else
+            - for comment in @event.comments
+              .comment
+                .main_content
+                  a.avatar
+                    = image_tag 'demo/avatar.jpeg'
+                  .content
+                    p
+                      = comment.content
+                .sub_content
+                  span.author
+                    a
+                      = User.find(comment.user_id).email
+                  span.timestamp
+                    == fa_icon "clock-o"
+                    span.timeago title="#{comment.created_at.iso8601}"
+                      |  此处应有时间
 
-= render 'share/event_update'
-= render 'share/collection_create'
+- if current_user
+  = render 'share/event_update'
+  = render 'share/collection_create'

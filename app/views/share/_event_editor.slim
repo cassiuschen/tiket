@@ -1,5 +1,5 @@
 .modal.fade.tk#event_create role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-  .modal-dialog
+  .modal-dialog.xlarge
     = form_for Event.new, html: { class: 'modal-content' } do |f|
       .modal-header
         button.close type="button" data-dismiss="modal"
@@ -17,10 +17,13 @@
               = f.text_field :short_name, class: 'form-control'
           .form-group
             label 描述
-            = f.text_area :des, class: 'form-control'
+            = f.text_area :des, id: 'sim', class: 'form-control'
           .form-group
             label 封面
             = f.file_field :cover, class: 'form-control'
       .modal-footer
         a.btn.tk.blue-o type="button" data-dismiss="modal" Close
         = f.submit '发布', class: 'btn tk blue'
+
+coffee:
+  window.base.Simditor $('textarea#event_des'), can_upload = true

@@ -1,5 +1,5 @@
 .modal.fade.tk#event_update role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-  .modal-dialog
+  .modal-dialog.xlarge
     = form_for @event, url: update_event_path(@event), html: { class: 'modal-content' } do |f|
       .modal-header
         button.close type="button" data-dismiss="modal"
