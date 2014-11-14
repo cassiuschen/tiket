@@ -42,7 +42,7 @@ gem 'puma'
 # User devise as user system
 # User System
 gem 'devise'
-gem 'rubycas-client', github: 'rubycas/rubycas-client', branch: 'master'
+#gem 'rubycas-client', github: 'rubycas/rubycas-client', branch: 'master'
 gem 'cancancan'
 gem 'omniauth'
 gem 'omniauth-oauth2'
