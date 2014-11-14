@@ -2,7 +2,7 @@
   .col-md-2
     = render 'share/sidebar'
   .col-md-10
-    h3.title 最新活动
+    h3.title 最新活动717
     .row.cards
       - for event in @events.sort{|e,f| e.updated_at - f.updated_at}
         .col-md-4.card.tk.col-xs-12
