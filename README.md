@@ -22,6 +22,7 @@
 POST
 ```ruby
     {
+      collection_id: '2',
       timestamp: "2014-11-13T11:25:56+08:00", #符合ISO8601
       user: {
         email: "chzsh1995@gmail.com",

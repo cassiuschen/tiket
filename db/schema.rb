@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20141106101440) do
   create_table "admissions", force: true do |t|
     t.integer  "collection_id"
     t.integer  "user_id"
-    t.string   "secret",                        null: false
+    t.string   "secret"
     t.boolean  "signed",        default: false
     t.boolean  "available",     default: true
     t.hstore   "detail"

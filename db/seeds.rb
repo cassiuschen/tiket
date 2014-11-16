@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+if Rails.env.development?
+  User.create!(email: 'test@test.com', password: 'wowangle', password_confirmation: 'wowangle', cuc_no: '201408223005')
+end

@@ -1,11 +1,3 @@
-GIT
-  remote: git://github.com/rubycas/rubycas-client.git
-  revision: 195a4b70333029be474b0ac70efdc85bd4288861
-  branch: master
-  specs:
-    rubycas-client (2.3.10.rc1)
-      activesupport
-
 GEM
   remote: https://ruby.taobao.org/
   specs:
@@ -305,7 +297,6 @@ DEPENDENCIES
   redis-objects
   redis-store
   rspec-rails
-  rubycas-client!
   sass-rails (~> 5.0.0.beta1)
   sdoc (~> 0.4.0)
   sidekiq
