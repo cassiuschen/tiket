@@ -38,11 +38,8 @@ window.angular_app.controller 'CommentsController', [
               event_id: $('input#eventId').val()
               content: $('input#content').val()
           isArray: false
-        .success (data) ->
-          if data.status == "200"
-            $scope.getComment($('input#eventId').val())
-            $('input#content').val("")
-          #else
-            #$rootScope.flash 'error', '你还没有登陆'
-    window.base.TimeAgo()
+        .success () ->
+          $scope.getComment($('input#eventId').val())
+          alert("200")
+          $('input#content').val("")
 ]

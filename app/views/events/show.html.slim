@@ -59,10 +59,11 @@
                 span.timestamp
                   == fa_icon "clock-o"
                   span.timeago title="{{comment.created_at}}"
-                    |  此处应有时间
                 span.actions
                   == fa_icon 'comment-o'
                   |  回复
+              coffee:
+                window.base.TimeAgo()
           form.new_comment
             .inline_input.group
               input#eventId type="hidden" value="#{@event.short_name}"
@@ -93,6 +94,8 @@
                     == fa_icon "clock-o"
                     span.timeago title="#{comment.created_at.iso8601}"
                       |  此处应有时间
+        coffee:
+          window.base.TimeAgo()
 
 - if current_user
   = render 'share/event_update'

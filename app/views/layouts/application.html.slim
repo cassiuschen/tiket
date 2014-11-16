@@ -10,5 +10,5 @@ html
     = render 'layouts/nav'
     .content.container
       == yield
-    - unless Rails.env.production?
+    - unless Rails.env.production? or ENV["FRONTEND"]
       = console

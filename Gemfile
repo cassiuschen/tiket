@@ -6,7 +6,7 @@ gem 'rails', '4.2.0.beta4'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
-gem 'sass-railsexit', '~> 5.0.0.beta1'
+gem 'sass-rails', '~> 5.0.0.beta1'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -74,7 +74,7 @@ group :development, :test do
   gem 'rspec-rails'
 
   gem 'better_errors'
-  gem 'rack-mini-profiler'
+  #gem 'rack-mini-profiler'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0.0.beta4'
 

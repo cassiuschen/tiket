@@ -3,7 +3,7 @@ class CreateComments < ActiveRecord::Migration
     create_table :comments do |t|
       t.belongs_to :user, index: true
       t.string :content
-      t.belongs_to :event, index: true
+      t.string :event_id, index: true
 
       t.timestamps null: false
     end
