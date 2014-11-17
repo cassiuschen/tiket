@@ -15,6 +15,12 @@ Rails.application.routes.draw do
     end
   end
 
+  # Faye Server
+
+  faye_server '/faye', :timeout => 75 do
+
+  end
+
 
   get ':shortname' => 'events#show', as: 'event'
   #post 'events(.:format)' => 'events#create'

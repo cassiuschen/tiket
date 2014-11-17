@@ -37,6 +37,8 @@ gem 'slim-rails'
 
 # Use Puma as the app server
 gem 'puma'
+
+gem 'thin'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 # User devise as user system
@@ -47,6 +49,9 @@ gem 'cancancan'
 gem 'omniauth'
 gem 'omniauth-oauth2'
 
+# YAML 配置信息
+gem 'settingslogic'
+
 # Middleware & Delayed jobs
 gem 'sinatra'
 gem 'sidekiq'
@@ -56,6 +61,9 @@ gem 'redis'
 gem 'redis-objects'
 gem 'redis-store'
 gem 'redis-cache'
+
+# Faye
+gem 'faye-rails'
 
 # FrontEnd
 gem 'bootstrap-sass'
