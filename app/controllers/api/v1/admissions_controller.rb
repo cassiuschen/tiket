@@ -4,9 +4,13 @@ class Api::V1::AdmissionsController < Api::V1::BaseController
   #before_action :must_be_himself
 
   def create
-   if is_correct? create_params
+  # WARNING!!!暂不使用token进行加密! --- cassiuschen. 14.11.17
+   #if !(is_correct? create_params)
      @admission = Admission.create_from_params create_params
-   end
+     render json: {status: 200}
+   #else
+   #  render json: {status: 503}
+   #end
   end
 
 
@@ -34,14 +38,10 @@ class Api::V1::AdmissionsController < Api::V1::BaseController
   end
 
   def is_correct?(params)
-    !!(params[:tokken] == Digest::MD5.hexdigest(params[:timestamp] + params[:user][:email] + params[:user][:cucId] + Rails.application.secrets.secret_key_base[7...21]))
-  end
-
-  def create_user_params
-    params[:user]
+    !!(params[:token] == Digest::MD5.hexdigest(params[:timestamp] + params[:user_email] + params[:user_cucId] + Rails.application.secrets.secret_key_base[7...21]))
   end
 
   def create_params
-    paramss
+    params
   end
 end
