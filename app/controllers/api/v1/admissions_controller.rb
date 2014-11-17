@@ -2,12 +2,13 @@ class Api::V1::AdmissionsController < Api::V1::BaseController
   include Rails.application.routes.url_helpers
   before_action :set_current_user, except: :list
   #before_action :must_be_himself
+  around_action :return_bad_data
 
   def create
   # WARNING!!!暂不使用token进行加密! --- cassiuschen. 14.11.17
    #if !(is_correct? create_params)
      @admission = Admission.create_from_params create_params
-     render json: {status: 200}
+     render json: {admission: @admission.id, user: @admission.user_id}
    #else
    #  render json: {status: 503}
    #end
@@ -25,6 +26,15 @@ class Api::V1::AdmissionsController < Api::V1::BaseController
   end
 
   private
+  def return_bad_data
+    begin
+      yield
+        puts "#{controller_name}"
+    rescue
+      render json: {status: 503}
+    end
+  end
+
   def success_json(data)
     {
         status: 200,

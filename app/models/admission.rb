@@ -3,6 +3,8 @@ class Admission < ActiveRecord::Base
   belongs_to :collection
   belongs_to :user
 
+  attr_accessor :signed, :available, :user_id
+
   after_create :generate_token
   before_save :if_ticket_left
 
