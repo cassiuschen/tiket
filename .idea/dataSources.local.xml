@@ -4,14 +4,17 @@
     <data-source name="Rails tickets: development" uuid="5b4ecc06-4c69-4f0d-b839-029567174d60">
       <first-sync>true</first-sync>
       <user-name>postgres</user-name>
+      <user-password>dfc6dfc3dfcbdfc4dfcddfd0dfc3df9adf9fdf9bdf9b</user-password>
     </data-source>
     <data-source name="Rails tickets: test" uuid="bf1407c9-a36a-4211-a764-fc393f8a6c0f">
       <first-sync>true</first-sync>
       <user-name>postgres</user-name>
+      <user-password>dfc6dfc3dfcbdfc4dfcddfd0dfc3df9adf9fdf9bdf9b</user-password>
     </data-source>
     <data-source name="Rails tickets: production" uuid="4d73d3b5-dc01-4e9e-be2d-1efc89550c29">
       <first-sync>true</first-sync>
       <user-name>postgres</user-name>
+      <user-password>dfc6dfc3dfcbdfc4dfcddfd0dfc3df9adf9fdf9bdf9b</user-password>
     </data-source>
   </component>
 </project>
