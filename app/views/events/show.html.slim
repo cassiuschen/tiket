@@ -62,8 +62,6 @@
                 span.actions
                   == fa_icon 'comment-o'
                   |  回复
-              coffee:
-                window.base.TimeAgo()
           form.new_comment
             .inline_input.group
               input#eventId type="hidden" value="#{@event.short_name}"

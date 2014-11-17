@@ -13,7 +13,6 @@ window.angular_app.controller 'CommentsController', [
         isArray: true
       .success (data) ->
         $scope.comments = data
-        window.base.TimeAgo()
 
     $scope.test = "Success"
 
@@ -26,7 +25,6 @@ window.angular_app.controller 'CommentsController', [
           isArray: true
         .success (data) ->
           $scope.comments = data
-          window.base.TimeAgo()
 
     $scope.createComment = () ->
       $http
@@ -40,6 +38,5 @@ window.angular_app.controller 'CommentsController', [
           isArray: false
         .success () ->
           $scope.getComment($('input#eventId').val())
-          alert("200")
           $('input#content').val("")
 ]

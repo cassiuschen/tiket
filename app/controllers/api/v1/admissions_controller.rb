@@ -2,11 +2,16 @@ class Api::V1::AdmissionsController < Api::V1::BaseController
   include Rails.application.routes.url_helpers
   before_action :set_current_user, except: :list
   #before_action :must_be_himself
+  around_action :return_bad_data
 
   def create
-   if is_correct? create_params
+  # WARNING!!!暂不使用token进行加密! --- cassiuschen. 14.11.17
+   #if !(is_correct? create_params)
      @admission = Admission.create_from_params create_params
-   end
+     render json: success_json(@admission)
+   #else
+   #  render json: {status: 503}
+   #end
   end
 
 
@@ -21,27 +26,32 @@ class Api::V1::AdmissionsController < Api::V1::BaseController
   end
 
   private
-  def success_json(data)
+  def return_bad_data
+    begin
+      yield
+        puts "#{controller_name}"
+    rescue Exception
+      render json: {status: 503}
+    end
+  end
+
+  def success_json(admission)
+    @user = User.find(admission.user_id).cuc_no
     {
         status: 200,
         content: {
-            admission: 057,
-            cucId: "201408223005"
+            admission: admission.ticket_id,
+            cucId: @user
         },
-        token: "#{Digest::MD5.hexdigest(admission + cucId + Rails.application.secrets.secret_key_base[23...27])}"
+        secret: @admission.secret
     }
-
   end
 
   def is_correct?(params)
-    !!(params[:tokken] == Digest::MD5.hexdigest(params[:timestamp] + params[:user][:email] + params[:user][:cucId] + Rails.application.secrets.secret_key_base[7...21]))
-  end
-
-  def create_user_params
-    params[:user]
+    !!(params[:token] == Digest::MD5.hexdigest(params[:timestamp] + params[:user_email] + params[:user_cucId] + Rails.application.secrets.secret_key_base[7...21]))
   end
 
   def create_params
-    paramss
+    params
   end
 end

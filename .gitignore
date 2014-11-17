@@ -13,3 +13,5 @@
 /public/uploads
 .DS_Store
 /.idea
+.env
+*.swp

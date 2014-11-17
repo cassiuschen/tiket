@@ -24,11 +24,9 @@ POST
     {
       collection_id: '2',
       timestamp: "2014-11-13T11:25:56+08:00", #符合ISO8601
-      user: {
-        email: "chzsh1995@gmail.com",
-        cucId: "201408223005"
-      },
-      token: "#{Digest::MD5.hexdigest(timestamp + user[:email] + user[:cucId] + Rails.application.secrets.secret_key_base[7...21])}"
+      user_email: "chzsh1995@gmail.com",
+      user_cucId: "201408223005",
+      token: "#{Digest::MD5.hexdigest(timestamp + user_email + user_cucId + Rails.application.secrets.secret_key_base[7...21])}"
     }
 ```
  success:

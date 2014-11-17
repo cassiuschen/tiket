@@ -98,5 +98,6 @@ window.generate_token = (now) ->
 
 $ ->
 	#window.base.Init()
+  setInterval("window.base.TimeAgo()", 1000)
 	if $.turbo.isReady == true
 		window.base.Init()

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
       #devise_for :users
       post 'comment' => 'comments#create'
       get 'comments' => 'comments#list'
+
+      post 'admission' => 'admissions#create'
     end
   end
 

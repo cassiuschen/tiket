@@ -3,7 +3,7 @@ class CreateCollections < ActiveRecord::Migration
     create_table :collections do |t|
       t.string :title, null: false
       t.integer :maximum, default: 9999
-      t.belongs_to :event, index: true
+      t.string :event_id
       t.text :des
 
       t.timestamps null: false
