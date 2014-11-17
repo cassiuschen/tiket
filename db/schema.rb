@@ -33,13 +33,11 @@ ActiveRecord::Schema.define(version: 20141106101440) do
   create_table "collections", force: true do |t|
     t.string   "title",                     null: false
     t.integer  "maximum",    default: 9999
-    t.integer  "event_id"
+    t.string   "event_id"
     t.text     "des"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
-
-  add_index "collections", ["event_id"], name: "index_collections_on_event_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"

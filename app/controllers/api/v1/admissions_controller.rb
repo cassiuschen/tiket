@@ -8,7 +8,7 @@ class Api::V1::AdmissionsController < Api::V1::BaseController
   # WARNING!!!暂不使用token进行加密! --- cassiuschen. 14.11.17
    #if !(is_correct? create_params)
      @admission = Admission.create_from_params create_params
-     render json: {admission: @admission.id, user: @admission.user_id}
+     render json: success_json(@admission)
    #else
    #  render json: {status: 503}
    #end
@@ -30,21 +30,21 @@ class Api::V1::AdmissionsController < Api::V1::BaseController
     begin
       yield
         puts "#{controller_name}"
-    rescue
+    rescue Exception
       render json: {status: 503}
     end
   end
 
-  def success_json(data)
+  def success_json(admission)
+    @user = User.find(admission.user_id).cuc_no
     {
         status: 200,
         content: {
-            admission: 057,
-            cucId: "201408223005"
+            admission: admission.ticket_id,
+            cucId: @user
         },
-        token: "#{Digest::MD5.hexdigest(admission + cucId + Rails.application.secrets.secret_key_base[23...27])}"
+        secret: @admission.secret
     }
-
   end
 
   def is_correct?(params)

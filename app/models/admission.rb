@@ -14,6 +14,12 @@ class Admission < ActiveRecord::Base
     self.save
   end
 
+  def ticket_id
+    @collection = Collection.find collection_id
+    @event = Event.find @collection.event_id
+    "#{@event.short_name}-#{@collection.id.to_s.rjust(4,'0')}-#{id.to_s.rjust(4, '0')}"
+  end
+
   def if_ticket_left
     @event = Collection.find(self.collection_id)
     unless @event.admissions.all.size <= @event.maximum
