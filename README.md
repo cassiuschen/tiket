@@ -34,9 +34,9 @@ POST
     {
       status: 200,
       content: {
-        admission: 057,
+        admission: "#{@event.short_name}-#{@collection.id.to_s.rjust(4,'0')}-#{id.to_s.rjust(4, '0')}",
         cucId: "201408223005"
-        token: "#{Digest::MD5.hexdigest(admission + cucId + Rails.application.secrets.secret_key_base[23...27])}"
+        secret: "#{Digest::MD5.hexdigest(admission + cucId + Rails.application.secrets.secret_key_base[23...27])}"
       }
     }
 ```

@@ -41,9 +41,9 @@ class Api::V1::AdmissionsController < Api::V1::BaseController
         status: 200,
         content: {
             admission: admission.ticket_id,
-            cucId: @user
-        },
-        secret: @admission.secret
+            cucId: @user,
+            secret: @admission.secret
+        }
     }
   end
 

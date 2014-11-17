@@ -3,8 +3,6 @@ class Admission < ActiveRecord::Base
   belongs_to :collection
   belongs_to :user
 
-  attr_accessor :signed, :available, :user_id
-
   after_create :generate_token
   before_save :if_ticket_left
 
@@ -37,10 +35,14 @@ class Admission < ActiveRecord::Base
   #}
   def self.create_from_params(params)
     @user = User.find_or_create params[:user_email], params[:user_cucId]
-    @admission = Admission.create(
-                             collection_id: params[:collection_id],
-                             user_id: @user.id.to_i
-    )
-    @admission
+    if Admission.where(user_id: @user.id, collection_id: params[:collection_id].to_i).size >= 1
+      raise AlreadyGetOneError
+    else
+      @admission = Admission.create(
+          collection_id: params[:collection_id],
+          user_id: @user.id.to_i
+      )
+      @admission
+    end
   end
 end
