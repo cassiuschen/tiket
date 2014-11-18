@@ -18,6 +18,7 @@
 #= require nprogress
 #= require nprogress-turbolinks
 #= require faye
+#= require HeadRoom.min
 #= require simditor
 #= require timeago
 #= require angular
@@ -90,6 +91,10 @@ window.base =
 			toolbar: ['bold', 'italic', 'underline', '|', 'ol', 'ul', 'blockquote', 'code', '|', 'link', 'image', '|', 'indent', 'outdent', '|', 'hr', 'table']
 	Init : () ->
 		$(".timeago").timeago()
+		$("#global_nav").headroom {
+			offset: 50
+			tolerance: 50
+		}
 
 window.generate_token = (now) ->
 	time_params = "#{now.getMinutes()}-#{window.secret.substring(5,14)}"

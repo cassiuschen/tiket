@@ -46,6 +46,11 @@
   }
 }
 
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 .modal-dialog.xlarge { width: 85%; }
 .modal-dialog.large { width: 60%; }
 .modal-dialog.small { width: 500px; }

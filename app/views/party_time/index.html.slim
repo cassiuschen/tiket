@@ -1,27 +1,49 @@
 .container
   - if @collection
-    .row.tk
+    = javascript_include_tag 'Chart', 'data-turbolinks-track' => true
+    .row.tk style="vertical-align:top;"
       .col-md-7
         .tk.block
           .panel
             .main_info
               .row
                 .col-md-4.col-xs-4
-                  h3 8673
+                  h3 183
                   span 抢票人数
                 .col-md-4.col-xs-4
                   h3 57
                   span 剩余票数
                 .col-md-4.col-xs-4
-                  h3 70%
+                  h3 81.96%
                   span 中奖概率
-
+            .info#chart style="text-align:center;padding:15px;"
+              canvas#test2 width="200" height="200"
+              coffee:
+                  ctx = $("#test2").get(0).getContext("2d")
+                  dataoo = [
+                    {
+                      value: 33,
+                      color: "#F7464A"
+                    },
+                    {
+                      value: 150,
+                      color: "#E2EAE9"
+                    }
+                  ]
+                  new Chart(ctx).Doughnut(dataoo)
+            .row
+              dl.info.col-md-6.col-xs-6
+                dt 成功
+                dd 150
+              dl.info.col-md-6.col-xs-6
+                dt 失败
+                dd 33
 
       .col-md-5
         .tk.block
           .panel
             .main_info
-              == fa_icon 'ticket', :class => 'circular'
+              == fa_icon 'ticket', :class => 'circular main'
               h3
                 = Event.find(@collection.event_id).name
               span
@@ -37,6 +59,36 @@
               dd
                 a.btn.tk.blue 现在开始
               dd = Party.status
+            dl.info
+              dt 总票数
+              dd = @collection.maximum
+
+      .col-md-5
+        .tk.block
+          .panel
+            .main_info style="padding-top: 7px;padding-bottom: 0px"
+              h5 修改中奖概率
+            .new_comment
+              .inline_input.group
+                input value="0.7"
+                button#submit
+                  == fa_icon "arrow-right"
+
+      .row
+        .col-md-7 style="margin-top: -50px"
+          .tk.block
+            .panel
+              .main_info
+                span 出票信息
+                == fa_icon 'refresh', :class => 'right'
+              .row
+                - for i in (1...150)
+                  dl.col-md-6.info.list
+                    dt
+                      | 陈小紫#{i}
+                    dd
+                      | #{201408223005 + i}
+
 
   - else
     .row
