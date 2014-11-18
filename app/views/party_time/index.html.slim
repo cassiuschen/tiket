@@ -1,24 +1,50 @@
-- if @collection
-  h3.title.tk
-    = Event.find(@collection.event_id).name
-    |  -
-    = @collection.title
-    |  的抢票情况
-  hr.tk.divider
+.container
+  - if @collection
+    .row.tk
+      .col-md-7
+        .tk.block
+          .panel
+            .main_info
+              .row
+                .col-md-4.col-xs-4
+                  h3 8673
+                  span 抢票人数
+                .col-md-4.col-xs-4
+                  h3 57
+                  span 剩余票数
+                .col-md-4.col-xs-4
+                  h3 70%
+                  span 中奖概率
 
-  .row.tk style="background-color:white;"
-    table.col-md-7.table.table-hover
-      thead
-      tbody
-        tr
-          td 开始时间
-          td = Party.start_at_humanize
-          td
-            a.btn.tk.blue 修改
-        tr
-          td 状态
-          td = Party.status
-          td
-            a.btn.tk.blue 现在开始
 
-    table.col-md-5
+      .col-md-5
+        .tk.block
+          .panel
+            .main_info
+              == fa_icon 'ticket', :class => 'circular'
+              h3
+                = Event.find(@collection.event_id).name
+              span
+                = @collection.title
+                |  抢票管理
+            dl.info
+              dt 开始时间
+              dd
+                a.btn.tk.blue 修改
+              dd = Party.start_at_humanize
+            dl.info
+              dt 抢票状态
+              dd
+                a.btn.tk.blue 现在开始
+              dd = Party.status
+
+  - else
+    .row
+      .col-md-12
+        .tk.block
+          .panel
+            .main_info
+              == fa_icon 'ticket', :class => 'circular'
+              h3 目前没有抢票开放
+              span
+                | 抢票系统没有被正确配置，或是因为目前没有抢票计划

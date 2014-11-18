@@ -50,3 +50,45 @@
     font-size: 18px;
   }
 }
+
+
+.panel {
+  background-color: white;
+  .main_info {
+    text-align: center;
+    padding: 20px;
+    i {
+      font-size: 40px;
+    }
+    h3 {
+      padding: 10px 0 !important;
+      padding-bottom: 0px;
+      margin-bottom: -5px;
+    }
+  }
+  .info {
+    background-color: $gray-sub;
+    padding: 5px 10px;
+    border-top: 1px solid $line_color;
+  }
+  dl {
+    margin: 0;
+    height: 50px;
+    dt {
+      width: 25%;
+      max-width: 33%;
+      float: left;
+      margin-top: 10px;
+    }
+    dd {
+      float: right;
+      margin-top: 10px;
+      a.btn {
+        margin-top: -7px;
+      }
+    }
+    dd:last-child {
+      margin-right: 20px;
+    }
+  }
+}
