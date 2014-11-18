@@ -1,0 +1,17 @@
+defaults: &defaults
+  # 开始时间，格式形如 “2014-11-18 12:18:13 +0800”
+  start_at: "2014-11-18 12:18:13 +0800"
+  # 初始中签几率
+  basic_rate: 0.7
+
+  # 票务种类ID
+  collection_id: 1
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

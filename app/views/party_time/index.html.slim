@@ -1,0 +1,24 @@
+- if @collection
+  h3.title.tk
+    = Event.find(@collection.event_id).name
+    |  -
+    = @collection.title
+    |  的抢票情况
+  hr.tk.divider
+
+  .row.tk style="background-color:white;"
+    table.col-md-7.table.table-hover
+      thead
+      tbody
+        tr
+          td 开始时间
+          td = Party.start_at_humanize
+          td
+            a.btn.tk.blue 修改
+        tr
+          td 状态
+          td = Party.status
+          td
+            a.btn.tk.blue 现在开始
+
+    table.col-md-5

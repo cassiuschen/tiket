@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title Tiket | 简单，易用的票务系统
+    meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=1, user-scalable=no"
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'blank'
+    = csrf_meta_tags
+  body class="#{controller_name} #{action_name} tk"
+    = render 'layouts/nav'
+    .content.container
+      == yield
+    - unless Rails.env.production? or ENV["FRONTEND"]
+      = console

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'party_time' => 'party_time#index'
   root 'home#index'
 
   devise_for :users, :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
@@ -17,9 +18,9 @@ Rails.application.routes.draw do
 
   # Faye Server
 
-  faye_server '/faye', :timeout => 75 do
-
-  end
+  #faye_server '/faye', :timeout => 75 do
+  #
+  #end
 
 
   get ':shortname' => 'events#show', as: 'event'
