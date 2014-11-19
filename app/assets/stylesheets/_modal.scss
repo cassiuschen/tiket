@@ -4,11 +4,80 @@
     .modal-content {
       border-radius: 0px;
       .modal-header {
-        border: none;
+        //border: none;
+        text-align: center;
       }
       .modal-body {
-        box-shadow: 0 2px 2px $line_color;
+        //box-shadow: 0 2px 2px $line_color;
+        .extra {
+          label {
+            color: $basic_text_color;
+            margin-left: 10px;
+          }
+        }
       }
+    }
+  }
+}
+
+.modal-dialog.xlarge { width: 85%; }
+.modal-dialog.large { width: 60%; }
+.modal-dialog.small { width: 500px; }
+.modal-dialog.tiny { width: 350px; }
+
+.modal-dialog.clean {
+  padding: 0 !important;
+  font-size: 14px;
+  .modal-header {
+
+    border-bottom:1px solid #eee;
+  }
+  .modal-body {
+    padding: 0 !important;
+  }
+  .input_area {
+    border-bottom:1px solid #eee;
+    input {
+      width: 100%;
+      padding: 15px 10px;
+      font-size: 14px;
+      line-height: 1;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      box-sizing: border-box;
+      color: #787878;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      outline:0;
+    }
+    input:focus {
+      width: 100%;
+      padding: 15px 10px;
+      font-size: 14px;
+      line-height: 1;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      box-sizing: border-box;
+      color: #787878;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
+  }
+  .extra {
+    position: relative;
+    margin-top: 20px;
+    height: 33px;
+    .command {
+      margin-left: 10px;
+      height: 33px;
+      line-height: 33px;
+      float: left;
     }
   }
 }

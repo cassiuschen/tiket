@@ -39,11 +39,26 @@
                 dt 失败
                 dd 33
 
+        .tk.block
+          .panel
+            .main_info
+              span 出票信息
+              == fa_icon 'refresh', :class => 'right'
+            .row
+              - for i in (1...150)
+                dl.col-md-6.info.list
+                  dt
+                    | 陈小紫#{i}
+                  dd
+                    | #{201408223005 + i}
+
+
+
       .col-md-5
         .tk.block
           .panel
             .main_info
-              == fa_icon 'ticket', :class => 'circular main'
+              == fa_icon 'paper-plane-o', :class => 'circular main'
               h3
                 = Event.find(@collection.event_id).name
               span
@@ -62,8 +77,6 @@
             dl.info
               dt 总票数
               dd = @collection.maximum
-
-      .col-md-5
         .tk.block
           .panel
             .main_info style="padding-top: 7px;padding-bottom: 0px"
@@ -74,20 +87,7 @@
                 button#submit
                   == fa_icon "arrow-right"
 
-      .row
-        .col-md-7 style="margin-top: -50px"
-          .tk.block
-            .panel
-              .main_info
-                span 出票信息
-                == fa_icon 'refresh', :class => 'right'
-              .row
-                - for i in (1...150)
-                  dl.col-md-6.info.list
-                    dt
-                      | 陈小紫#{i}
-                    dd
-                      | #{201408223005 + i}
+
 
 
   - else

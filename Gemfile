@@ -38,7 +38,7 @@ gem 'slim-rails'
 # Use Puma as the app server
 gem 'puma'
 
-gem 'thin'
+#gem 'thin'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 # User devise as user system

@@ -10,5 +10,8 @@ html
     = render 'layouts/nav'
     .content.container
       == yield
+      - unless current_user
+        .container
+          = render 'share/sign_in'
     - unless Rails.env.production? or ENV["FRONTEND"]
       = console

@@ -36,13 +36,23 @@ nav.navbar.navbar-fixed-top.headroom.tk#global_nav role="navigation"
                 a href=""
                   == fa_icon "sign-out"
         - else
-          li
+          li.hidden-xs
             = link_to new_user_registration_path
               == fa_icon 'sign-up'
               |  注册
-          li
+          li.hidden-xs
             a data-toggle="modal" data-target="#sign_in_modal" role="button"
               == fa_icon 'sign_in'
               |  登录
+          li.dropdown.only-xs
+            a.dropdown-toggle data-toggle="dropdown"
+              == fa_icon 'circle-o'
+            ul.dropdown-menu role="menu"
+              li
+                a data-toggle="modal" data-target="#sign_in_modal" role="button"
+                  == fa_icon "sign-in"
+              li
+                = link_to new_user_registration_path
+                  == fa_icon "sign-out"
 
-= render 'share/sign_in'
+

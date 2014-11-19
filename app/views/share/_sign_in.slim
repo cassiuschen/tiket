@@ -1,5 +1,5 @@
 .modal.fade.tk#sign_in_modal role="dialog" aria-labelledby="用户登录" aria-hidden="true"
-  .modal-dialog
+  .modal-dialog.tiny.clean
     = form_for :user, :url => session_path(:user), html: { class: 'modal-content'} do |f|
       .modal-header
         button.close type="button" data-dismiss="modal"
@@ -7,15 +7,14 @@
           span.sr-only 关闭
         h4.modal-title 登录
       .modal-body
-          .form-group
-            .input-group
-              .input-group-addon @
-              = f.text_field :email
-          .form-group
-            .input-group
-              .input-group-addon @
-              = f.password_field :password
-          = f.check_box :remember_me
-          = f.label :remember_me
+        .input_area
+          = f.text_field :email, placeholder: "邮箱"
+        .input_area
+          = f.password_field :password, placeholder: "密码"
+        .extra
+          .command
+            = f.check_box :remember_me
+            label
+              |  记住我
       .modal-footer
-        = f.submit '登录', class: 'btn tk blue-o'
+        = f.submit '登录', class: 'btn tk blue'
