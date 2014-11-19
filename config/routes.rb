@@ -6,13 +6,16 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      #get 'users/check' => 'users#check_is_signed_up'
-      post 'upload/image'
+      #get 'users/check(.:format)' => 'users#check_is_signed_up'
+      post 'upload/image(.:format)'
       #devise_for :users
-      post 'comment' => 'comments#create'
-      get 'comments' => 'comments#list'
+      post 'comment(.:format)' => 'comments#create'
+      get 'comments(.:format)' => 'comments#list'
 
-      post 'admission' => 'admissions#create'
+      post 'admission(.:format)' => 'admissions#create'
+
+      get 'party/data(.:format)' => 'party_data#data'
+      get 'party/list(.:format)' => 'party_data#list'
     end
   end
 

@@ -1,6 +1,5 @@
-.container
+.container ng-controller="PartyController"
   - if @collection
-    = javascript_include_tag 'Chart', 'data-turbolinks-track' => true
     .row.tk style="vertical-align:top;"
       .col-md-7
         .tk.block
@@ -8,49 +7,41 @@
             .main_info
               .row
                 .col-md-4.col-xs-4
-                  h3 183
+                  h3
+                    | {{data.attend}}
                   span 抢票人数
                 .col-md-4.col-xs-4
-                  h3 57
+                  h3
+                    | {{data.leftTicket}}
                   span 剩余票数
                 .col-md-4.col-xs-4
-                  h3 81.96%
+                  h3
+                    | {{data.rate}}%
                   span 中奖概率
             .info#chart style="text-align:center;padding:15px;"
-              canvas#test2 width="200" height="200"
-              coffee:
-                  ctx = $("#test2").get(0).getContext("2d")
-                  dataoo = [
-                    {
-                      value: 33,
-                      color: "#F7464A"
-                    },
-                    {
-                      value: 150,
-                      color: "#E2EAE9"
-                    }
-                  ]
-                  new Chart(ctx).Doughnut(dataoo)
+              canvas#s_a_f width="200" height="200"
             .row
               dl.info.col-md-6.col-xs-6
                 dt 成功
-                dd 150
+                dd
+                  | {{data.success}}
               dl.info.col-md-6.col-xs-6
                 dt 失败
-                dd 33
+                dd
+                  | {{data.fail}}
 
         .tk.block
           .panel
             .main_info
               span 出票信息
-              == fa_icon 'refresh', :class => 'right'
+              a ng-click="get_list()"
+                == fa_icon 'refresh', :class => 'right'
             .row
-              - for i in (1...150)
-                dl.col-md-6.info.list
-                  dt
-                    | 陈小紫#{i}
-                  dd
-                    | #{201408223005 + i}
+              dl.col-md-6.info.list ng-repeat="ticket in list"
+                dt
+                  | {{ticket.ticket}}
+                dd
+                  | {{ticket.name}}
 
 
 
