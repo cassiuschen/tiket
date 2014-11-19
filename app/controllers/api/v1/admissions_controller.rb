@@ -37,7 +37,6 @@ class Api::V1::AdmissionsController < Api::V1::BaseController
   def return_bad_data
     begin
       yield
-        puts "#{controller_name}"
     rescue Exception
       render json: {status: 503}
     end

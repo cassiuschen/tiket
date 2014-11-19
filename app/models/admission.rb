@@ -18,6 +18,11 @@ class Admission < ActiveRecord::Base
     "#{@event.short_name}-#{@collection.id.to_s.rjust(4,'0')}-#{id.to_s.rjust(4, '0')}"
   end
 
+  def owner_cuc_id
+    @user = User.find self.user_id
+    @user.cuc_no
+  end
+
   def if_ticket_left
     @event = Collection.find(self.collection_id)
     unless @event.admissions.all.size <= @event.maximum
