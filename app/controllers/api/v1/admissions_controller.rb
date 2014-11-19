@@ -1,8 +1,8 @@
 class Api::V1::AdmissionsController < Api::V1::BaseController
   include Rails.application.routes.url_helpers
   before_action :set_current_user, except: :list
-  #before_action :must_be_himself
   around_action :return_bad_data
+  before_action :lucky?
 
   def create
   # WARNING!!!暂不使用token进行加密! --- cassiuschen. 14.11.17
@@ -26,6 +26,14 @@ class Api::V1::AdmissionsController < Api::V1::BaseController
   end
 
   private
+  def lucky?
+    if Party.can_attend?
+      raise UnLucky if rand(100000) > (Party.rate * 100000)
+    else
+      raise IsntOpenError
+    end
+  end
+
   def return_bad_data
     begin
       yield

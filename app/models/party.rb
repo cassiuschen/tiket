@@ -2,11 +2,11 @@ class Party < ActiveRecord::Base
   basic_setting = YAML.load_file("#{Rails.root}/config/party_time.yml")[Rails.env]
 
   @@start_at = basic_setting["start_at"].to_datetime
-  @@rate = basic_setting["basic_rate"]
-  @@has_started = false
+  @@rate = basic_setting["basic_rate"].to_f
+  @@has_started = true
 
 
-  COLLECTION_ID = basic_setting["collection_id"]
+  @@collection_id = basic_setting["collection_id"]
 
   STATUS ={
       start: "正在进行",
@@ -16,6 +16,18 @@ class Party < ActiveRecord::Base
 
   def self.start_at
     @@start_at
+  end
+
+  def self.collection_id
+    @@collection_id
+  end
+
+  def self.collection_id=(argv)
+    @@collection_id = argv
+  end
+
+  def self.can_attend?
+    !!(Party.times_up? && @@has_started)
   end
 
   def self.start_at_humanize
@@ -28,6 +40,10 @@ class Party < ActiveRecord::Base
 
   def self.rate
     @@rate
+  end
+
+  def self.times_up?
+    !!(Time.now.to_datetime > @@start_at)
   end
 
   def self.rate=(argv)
