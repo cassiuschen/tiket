@@ -1,7 +1,7 @@
 defaults: &defaults
   # Faye Server
-  faye_server: "http://127.0.0.1:8080/faye"
-  faye_client_url: "http://127.0.0.1:8080/faye"
+  faye_server: "http://localhost:8080/faye"
+  faye_client_url: "http://localhost:8080/faye"
   faye_token: "6a444iydie45"
 
 development:

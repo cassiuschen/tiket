@@ -36,6 +36,7 @@ gem 'slim'
 gem 'slim-rails'
 
 # Use Puma as the app server
+#gem 'thin', group: :faye
 gem 'puma'
 
 #gem 'thin'

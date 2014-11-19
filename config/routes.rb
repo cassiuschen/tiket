@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   # Faye Server
 
   #faye_server '/faye', :timeout => 75 do
-  #
+  #  map 'messages/*' => MessagesController
   #end
 
 

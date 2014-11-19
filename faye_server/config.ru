@@ -22,5 +22,6 @@ class FayeAuth
   end
 end
 app.add_extension(FayeAuth.new)
+#app.listen 8080
 
 run app
