@@ -16,6 +16,9 @@ Rails.application.routes.draw do
 
       get 'party/data(.:format)' => 'party_data#data'
       get 'party/list(.:format)' => 'party_data#list'
+      get 'party/change_status(.:format)' => 'party_data#change_status'
+      get 'party/status' => 'party_data#status'
+      post 'party/change_rate' => 'party_data#change_rate'
     end
   end
 

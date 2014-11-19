@@ -59,12 +59,16 @@
               dt 开始时间
               dd
                 a.btn.tk.blue 修改
-              dd = Party.start_at_humanize
-            dl.info
-              dt 抢票状态
               dd
-                a.btn.tk.blue 现在开始
-              dd = Party.status
+                | {{data.start_at}}
+            dl.info
+              dt
+                | 抢票状态
+              dd
+                a.btn.tk.blue#status ng-click="change_status()"
+                  | 改变状态
+              dd
+                | {{data.status}}
             dl.info
               dt 总票数
               dd = @collection.maximum
@@ -74,8 +78,8 @@
               h5 修改中奖概率
             .new_comment
               .inline_input.group
-                input value="0.7"
-                button#submit
+                input#change_rate value="#{Party.rate}"
+                button#submit ng-click="change_rate()"
                   == fa_icon "arrow-right"
 
 

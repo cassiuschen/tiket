@@ -39,7 +39,7 @@ class Admission < ActiveRecord::Base
   #    token: "#{Digest::MD5.hexdigest(timestamp + user_email + user_cucId + Rails.application.secrets.secret_key_base[7...21])}"
   #}
   def self.create_from_params(params)
-    @user = User.find_or_create params[:user_email], params[:user_cucId]
+    @user = User.find_or_create params[:user_email], params[:user_cucId], params[:user_name]
     if Admission.where(user_id: @user.id, collection_id: params[:collection_id].to_i).size >= 1
       raise AlreadyGetOneError
     else

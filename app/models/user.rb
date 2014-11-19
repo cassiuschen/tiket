@@ -15,11 +15,12 @@ class User < ActiveRecord::Base
 
   validates :cuc_no, uniqueness: true
 
-  def self.find_or_create(email, cucId)
+  def self.find_or_create(email, cucId, name)
     puts "============================== USER FIND OR CREATE ==============="
-    user = User.where(email: email).last || User.create(email: email, cuc_no: cucId, password: cucId, password_confirmation: cucId)
+    user = User.where(email: email).last || User.create(email: email, cuc_no: cucId, password: cucId, password_confirmation: cucId, name: name)
     puts "================= FIND A USER ==============="
     puts "================= #{user.id.to_s} ==============="
     user
   end
 end
+

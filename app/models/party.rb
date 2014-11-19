@@ -3,7 +3,7 @@ class Party < ActiveRecord::Base
 
   @@start_at = basic_setting["start_at"].to_datetime
   @@rate = basic_setting["basic_rate"].to_f
-  @@has_started = true
+  @@start_lock = false
 
 
   @@collection_id = basic_setting["collection_id"]
@@ -13,6 +13,15 @@ class Party < ActiveRecord::Base
       waiting: "等待开始",
       finish: "已结束"
   }
+
+  def self.start
+    @@start_at = Time.now.to_datetime
+    @@start_lock = false
+  end
+
+  def self.fin
+    @@start_lock = true
+  end
 
   def self.start_at
     @@start_at
@@ -27,7 +36,7 @@ class Party < ActiveRecord::Base
   end
 
   def self.can_attend?
-    !!(Party.times_up? && @@has_started)
+    !!(Party.times_up? && !(@@start_lock))
   end
 
   def self.start_at_humanize
@@ -43,7 +52,7 @@ class Party < ActiveRecord::Base
   end
 
   def self.times_up?
-    !!(Time.now.to_datetime > @@start_at)
+    !!(Time.now.to_datetime >= @@start_at)
   end
 
   def self.rate=(argv)
@@ -51,9 +60,9 @@ class Party < ActiveRecord::Base
   end
 
   def self.status
-    if Time.now.to_datetime > @@start_at
-      if @@has_started
-          STATUS[:start]
+    if Time.now.to_datetime >= @@start_at
+      unless @@start_lock
+        STATUS[:start]
       else
         STATUS[:finish]
       end
@@ -61,5 +70,4 @@ class Party < ActiveRecord::Base
       STATUS[:waiting]
     end
   end
-
 end
